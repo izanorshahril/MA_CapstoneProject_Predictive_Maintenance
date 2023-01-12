@@ -1,58 +1,73 @@
 # MTDS MA Capstone Project Report: Predictive Maintenance
 
-Park for Project Report, will edit later.
-
 [comment]: # (This document is intended to capture the use case summary for this engagement. An executive summary should contain a brief overview of the project, but not every detail. Only the current summary should be captured here and this should be edited over time to reflect the latest details.)
 [comment]: # (Some ideas of what to include in the executive summary are detailed below. Please edit and capture the relevant information within each section)
 [comment]: # (To capture more detail in the scoping phase, the optional template Scoping.md may be utilized. If more detail around the data, use case, architecture, or other aspects needs to be captured, additional markdown files can be referenced and placed into the Docs folder)
 
-This file contains information about the project being executed (in this case, the UCI Adult Income sample using Azure Machine Learning). It is organized according to the Team Data Science (TDSP) Process [Lifecycle stages](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md), with an additional section for architecture and environment. 
+This repository is for MTDS5223 Manufacturing Analytics Capstone Project titled Predictive Maintenance. We planned to follow the standard [Lifecycle stages](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md), with an additional section for architecture and environment. 
 
 
 ## 1. Business Understanding
-* NOTE: This is a sample for a tutorial, so scope, plan etc., does not necessarily correspond to an actual data science project addressing a specific business question. In an actual project, the problem definition, scope, plan, personnel sections are likely to be much more detailed, based on discussions with the client (or business owner), the structure of the data science team etc.
+* NOTE: Please specific the problem definition, scope, plan, personnel, the structure of the data science team etc.
 
-### Problem Definition
-The purpose of this sample is to show how to instantiate and execute a projet using the TDSP structure and templates.
+### Problem Background
+Overall Equipment Effectiveness (OEE) is a kind of standard that to measure manufacturing productivity performance. OEE measurement can be help in underlying the losses and gain important insight on improve the current manufacturing process. OEE is measuring by 3 main factors which are availability (equipment planned & unplanned stop), performance (any slow cycle or small stoppage) and quality (yield).
 
-The dataset for this project is from the UCI ML Repository [[link]](https://archive.ics.uci.edu/ml/datasets/adult). It is taken from the 1994 US Census database and contains census and income information for about 50,000 individuals. Based on census features, the machine learning task is to predict if the income of an individual is above $50,000 or not (binary classification).
+#### Ishikawa Diagram
+#### Other diagrams
 
-Further information about the dataset is downloaded and saved [here](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/customer_docs/UCI_Adult_Income_Data_Information.txt). 
+
+### Problem Statement
+Equipment in manufacturing can contributes to the OEE factors (available, performance, quality) if not well maintained. Equipment without being repaired before it fails, can directly or indirectly causing further damage to the equipment and connected systems. In order to secure quality and cost saving, it is crucial to reduce any unscheduled machine breakdown. Preventive maintenance was most common technique that implemented in manufacturing sector these year. However, with preventive maintenance, the limitation was only periodic scheduling to perform health check and service to machine. In proactive manner, predictive maintenance can use to predict the failure, and before machine part breakdown, it take to precaution to repair or change part to reduce sudden failure during production running which causing un-scheduled downtime. Most of predictive maintenance today align with the implementation of Industry 4.0 is using edge platform attached to the machine by using sensor data as input that detect signal abnormality and critical threshold but there are still many legacy machines that not ready to be modernized with such capability.
+
+#### PM, CBM, PdM
+! flow diagram here !
+
+### Objective
+Our objective in this project is to predict and to detect anomaly event which can cause unscheduled downtime for the running equipment.
 
 ### Scope
+ * ! TBD !
  * The scope of this sample is to create a binary classification machine learning model which address the above rediction problem. 
  * We execute the project in Azure Machine Learning. We use the Team Data Science Process template of Azure Machine Learning for this project. 
  * We operationalize the solution in Azure Container Services for batch and single-mode scoring.
 
-## Plan
-We follow the stages fo the TDSP lifecycle, and organize documentation and code according to the stages of the lifecycle. Documentation about the work and findings in each of the lifecycle stages is included below. The code is organized into folders that follow the lifecycle stages. Documentation about the code and its execution is provided in .\code folder and subfolders.
+## Methodology
+We planned to follow the stages from the TDSP lifecycle, and organize documentation and code according to the stages of the lifecycle. Documentation about the work and findings in each of the lifecycle stages is included below. The code is organized into folders that follow the lifecycle stages. Documentation about the code and its execution is provided in .\code folder and subfolders.
+
+#### References
+! put reference here !
+
+#### Solution
+! put architecture here !
 
 ### Team Personnel
-The project is executed by one **data scientist** and a **technical program manager**. The technical program manager serves at the project lead, with appropriate credentials to provision necessary Azure resources for development and deployment, and Git server for version control. Data scientist executes the various data science steps, creates and compares models, and deployes the final model using Azure Machine Learning.
-
-* NOTE: In a customer project additional personnel, from both from a data science team as well as the client organization, may be involved (as outlined in the TDSP documentation [[link]](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md))
+This project is executed by three members. We need appropriate credentials to provision necessary Azure resources for development and deployment, and Git server for version control. Then execute the various data science steps, creates and compares models, and deployes the final model using Azure Machine Learning.
 
 ### Metrics
-Performance of the machine learning models will be evaluated on the test set provided by the UCI data repository [[link]](https://archive.ics.uci.edu/ml/machine-learning-databases/adult/). Accuracy is measured and reported using AUC. AUC of > 0.8 will be considered acceptable and suitable for deployment.
+Performance of the machine learning models will be evaluated on the test set of the machine alarm joined with the machine status dataset. Accuracy is measured and reported using AUC. AUC of > 0.8 will be considered acceptable and suitable for deployment.
 
-## 2. [**Data Acquisition and Understanding**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/01_data_acquisition_and_understanding)
+#### ROI
+
+
+## 2. Data Acquisition and Understanding
 
 ### Raw Data
-For detailed information about the data, please see the [description](https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.names) in the UCI repository. 
+The sample of the raw data can be view in here (put folder or link here)
 
-This data was extracted from the census bureau database found at: http://www.census.gov/ftp/pub/DES/www/welcome.html. 
+This data was extracted from (Siew Fen pls explain here)
 
-There are a total of 48,842 instances (prior to any filtering), mix of continuous and discrete (train=32561, test=16281)
+There are a total of # of rows for machine alarm and # of rows for machine status
 
-Probability for the label '>50 K': 23.93% / 24.78% (without unknowns)
+Machine alarm contains various alarms timestamped to Machine A, B, and C.
 
-Probability for the label '<=50 K': 76.07% / 75.22% (without unknowns)
+Machine status contains the same machine status over the same period.
 
-TARGET: Income class >50 K, <=50 K.
+TARGET: (put our target, predict class here)
 
-FEATURES: Age, work class, education level, education level, race, sex, hours of work per week, etc.
+FEATURES: Alarms
 
-### [Data Exploration with IDEAR Utility](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/01_data_acquisition_and_understanding/IDEAR)
+### Data Exploration
 Data exploration is performed using the Python 3 [IDEAR (Interactive Data Exploration and Reporting) utility](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils/Python) published as a part of [TDSP suite of data science tools](https://github.com/Azure/Azure-TDSP-Utilities). This utility helps to generate standardized data exploration reports for data containing numerical and categorical features and target. Details of how the Python 3 IDEAR utility was used is provided below. 
 
 The location of the final data exploration report is here: (.\Docs\DeliveralbeDocs\IDEAR.html).
