@@ -4,7 +4,7 @@
 [comment]: # (Some ideas of what to include in the executive summary are detailed below. Please edit and capture the relevant information within each section)
 [comment]: # (To capture more detail in the scoping phase, the optional template Scoping.md may be utilized. If more detail around the data, use case, architecture, or other aspects needs to be captured, additional markdown files can be referenced and placed into the Docs folder)
 
-This repository is for MTDS5223 Manufacturing Analytics Capstone Project titled Predictive Maintenance. We planned to follow the standard [Lifecycle stages](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md), with an additional section for architecture and environment. 
+This repository is for MTDS5223 Manufacturing Analytics Capstone Project titled Predictive Maintenance.
 
 
 ### Problem Background
@@ -21,6 +21,7 @@ Equipment in manufacturing can contributes to the OEE factors (available, perfor
 ### Objective
 Our objective in this project is to predict event which can cause unscheduled downtime for the running equipment.
 
+
 ### Predictive maintenance
 Predictive maintenance is a proactive approach to maintenance that uses data, analytics and machine learning algorithms to predict when equipment is likely to fail and schedule maintenance accordingly.
 
@@ -32,23 +33,22 @@ Predictive maintenance and preventive maintenance are two types of maintenance s
 ##### Equipment Downtime: Preventive maintenance can result in unplanned downtime, as maintenance activities may be performed even when equipment is functioning properly. Predictive maintenance can reduce unplanned downtime, as maintenance is performed only when a failure is predicted.
 ! flow diagram here !
 
-### Scope
- * ! TBD !
- * The scope of this sample is to create a binary classification machine learning model which address the above rediction problem. 
- * We execute the project in Azure Machine Learning. We use the Team Data Science Process template of Azure Machine Learning for this project. 
- * We operationalize the solution in Azure Container Services for batch and single-mode scoring.
 
-## Methodology
-We planned to follow the stages from the TDSP lifecycle, and organize documentation and code according to the stages of the lifecycle. Documentation about the work and findings in each of the lifecycle stages is included below. The code is organized into folders that follow the lifecycle stages. Documentation about the code and its execution is provided in .\code folder and subfolders.
-
-#### References
+### References
 ! put reference here !
 
-#### Solution
+
+## Methodology
+We integrated basic Team Data Science Process (TDSP) Lifecycle  into DMAIC for methodology in our project. Data Science Lifecycle (DSLC) is list of steps in solving data-related problem using scientific and mathematical methods. TDSP Lifecycle is a team approach on DSLC projects. DMAIC is acronym for Define, Measure, Analyse, Improve and Control which is Six Sigma methodology for problem solving and improvement.
+
+
+#### POC Architecture
 ! put architecture here !
 
-### Team Personnel
+### Data EDA
 This project is executed by three members. We need appropriate credentials to provision necessary Azure resources for development and deployment, and Git server for version control. Then execute the various data science steps, creates and compares models, and deployes the final model using Azure Machine Learning.
+
+### Data Preparation
 
 ### Metrics
 Performance of the machine learning models will be evaluated on the test set of the machine alarm joined with the machine status dataset. Accuracy is measured and reported using AUC. AUC of > 0.8 will be considered acceptable and suitable for deployment.
