@@ -97,15 +97,19 @@ FEATURES: Alarms
 
 ### Data Exploration
 Data exploration is performed using the Python 3
+
 ![image](https://user-images.githubusercontent.com/124276426/216376181-8489aae7-663b-452f-ad33-27978a5d71a8.png)
 
 Machine alarm data trend show that the alarm count is increasing over time, where in OEE is showed the OEE also decline over time,
+
 ![image](https://user-images.githubusercontent.com/124276426/216377425-c165d181-fba1-4351-98d2-4391d4c5cb84.png)
 
 Where the distribution of alarm for 5 machines are consider equally, it is said to be the data are even for each machine, where we can generalize the alarm data without equipment info train into the model.
+
 ![image](https://user-images.githubusercontent.com/124276426/216377553-9c64aeb1-6123-48f8-bcb4-8ec20d01da98.png)
 
 From data exploration, we also could have a glance on which are the top alarm in machine. However, our target for this project is to predict the major downtime and it caused by which attribute. Later we could compare to this Pareto chart whether top alarm causing the UDT in machine.
+
 ![Uploading image.png…]()
 
 
