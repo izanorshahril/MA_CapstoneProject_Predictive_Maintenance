@@ -95,7 +95,18 @@ Performance of the machine learning models will be evaluated on the test set of 
 ## 2. Data Acquisition and Understanding
 
 ### Raw Data
-The sample of the raw data can be view in here (put folder or link here)
+Raw data are as shown as below:
+![Uploading image.png…]()
+There are 2 data we are focus on:
+1) Machine alarm data
+2) Machine status data
+
+There are total 5 machines data is used where same equipment platform machine data is extracted. They are come from molding in assembly process. 
+The machine status UDR (unschedule downtime for repair) is focus in this project. Besides, machine alarm collected period are from Jan2022 to Dec2022.
+
+The raw data can be view in folder or link here:
+https://github.com/izanorshahril/MTDS5223_MA_CapstoneProject_Predictive_Maintenance/blob/main/raw/machine%20status.xlsx
+https://github.com/izanorshahril/MTDS5223_MA_CapstoneProject_Predictive_Maintenance/blob/main/raw/machine%20status.xlsx
 
 This data was extracted from (Siew Fen pls explain here)
 
