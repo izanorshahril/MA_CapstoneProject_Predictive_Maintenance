@@ -6,12 +6,28 @@
 
 This repository is for MTDS5223 Manufacturing Analytics Capstone Project titled Predictive Maintenance.
 
+Team members: 
+Iza Norshahril Bin Ibrahim M032110060,
+Ang Siew Fen M032110048,
+Goh Chau Fong M032110046
 
 ### Problem Background
 Overall Equipment Effectiveness (OEE) is a kind of standard that to measure manufacturing productivity performance. OEE measurement can be help in underlying the losses and gain important insight on improve the current manufacturing process. OEE is measuring by 3 main factors which are availability (equipment planned & unplanned stop), performance (any slow cycle or small stoppage) and quality (yield).
+Below show the OEE performance based on Molding machine in our case study:
+![image](https://user-images.githubusercontent.com/124276426/216356722-50d89466-39d5-413b-aa71-5c404030bb05.png)
+
 
 #### Ishikawa Diagram
+Below show the Ishikiwa Diagram for this projectv which finding the root cause contribute to OEE deterioration in machine.
+We are focus on 5M in this case, which are Man, Machine, Material, Method and Milieu (which meaning is environment):
+![image](https://user-images.githubusercontent.com/124276426/216355247-c0addf7a-b2c1-4183-a5ca-242a09363e12.png)
+
 #### Problem Selection
+Below are the problem selection list, where from this list we observe that in 5M's machine and man having high impact to our OEE, where late response and high stoppages in machine will cause OEE deterioration
+![image](https://user-images.githubusercontent.com/124276426/216357025-e8ca8ed6-3c3f-4b25-981e-64d7216fc2b6.png)
+
+Problem Selection Matrix showing the criticality, severity and ranking for our target problem selection
+![image](https://user-images.githubusercontent.com/124276426/216357728-a9f2cdef-64c8-4e19-bbd5-58eaad8c6645.png)
 
 
 ### Problem Statement
@@ -19,7 +35,10 @@ Equipment in manufacturing can contributes to the OEE factors (available, perfor
 
 
 ### Objective
-Our objective in this project is to predict event which can cause unscheduled downtime for the running equipment.
+Our objective in this project is:-
+1) To predict event which can cause unscheduled downtime for the running equipment
+2) To develop a proof-of-concept (POC) prediction model based on machine alarm and status data
+3) To evaluate model performance
 
 
 ### Predictive maintenance
@@ -31,11 +50,28 @@ Predictive maintenance and preventive maintenance are two types of maintenance s
 ##### Proactive vs. Reactive: Preventive maintenance is a proactive approach to maintenance, as maintenance activities are performed before failures occur. Predictive maintenance is a reactive approach, as maintenance is performed only when a failure is predicted.
 ##### Cost: Preventive maintenance can be more expensive as maintenance activities are performed regularly, regardless of the actual condition of the equipment. Predictive maintenance can be more cost-effective, as maintenance activities are performed only when necessary, reducing the overall maintenance cost.
 ##### Equipment Downtime: Preventive maintenance can result in unplanned downtime, as maintenance activities may be performed even when equipment is functioning properly. Predictive maintenance can reduce unplanned downtime, as maintenance is performed only when a failure is predicted.
-! flow diagram here !
-
+![image](https://user-images.githubusercontent.com/124276426/216359179-851d8a67-1e23-456d-822c-226ee7f7270f.png)
 
 ### References
-! put reference here !
+De Ron, A. J., & Rooda, J. E. (2005). Equipment effectiveness: OEE revisited. IEEE transactions on semiconductor manufacturing, 18(1), 190-196.​
+
+Prasetyo, Y. T., & Veroya, F. C. (2020, April). An Application of Overall Equipment Effectiveness (OEE) for Minimizing the Bottleneck Process in Semiconductor Industry. In 2020 IEEE 7th International Conference on Industrial Engineering and Applications (ICIEA) (pp. 345-349). IEEE.​
+
+Lopena, S., Bertumen, E., & Mondero, J. (2021). Integrated Capacity Planning Tool Implementation in an OSAT Company using the Six Sigma DMAIC Framework. In DLSU Research Congress 2021 (Vol. 6).​
+
+Fischer, D., Moder, P., & Ehm, H. (2021, March). Investigation of predictive maintenance for semiconductor manufacturing and its impacts on the supply chain. In 2021 22nd IEEE International Conference on Industrial Technology (ICIT) (Vol. 1, pp. 1409-1416). IEEE.​
+
+Chazhoor, A., Mounika, Y., Sarobin, M. V. R., Sanjana, M. V., & Yasashvini, R. (2020, October). Predictive maintenance using machine learning based classification models. In IOP Conference Series: Materials Science and Engineering (Vol. 954, No. 1, p. 012001). IOP Publishing.​
+
+Zhang, M., & Wang, D. (2019). Machine Learning Based Alarm Analysis and Failure Forecast in Optical Networks. 2019 24th OptoElectronics and Communications Conference (OECC) and 2019 International Conference on Photonics in Switching and Computing (PSC).​
+
+Butte, S., Prashanth, A.R. and Patil, S., 2018, April. Machine learning based predictive maintenance strategy: a super learning approach with deep neural networks. In 2018 IEEE Workshop on Microelectronics and Electron Devices (WMED) (pp. 1-5). IEEE.​
+
+Van Staden, H. E., Deprez, L., & Boute, R. N. (2022). A dynamic “predict, then optimize” preventive maintenance approach using operational intervention data. European Journal of Operational Research, 302(3), 1079-1096.​
+
+Jang, J., Nana, D., Hochschild, J., & de Lorenzo, J. V. H. (2021). Predicting Breakdown Risk Based on Historical Maintenance Data for Air Force Ground Vehicles. arXiv preprint arXiv:2112.13922.​
+
+Susto, Gian Antonio; Schirru, Andrea; Pampuri, Simone; McLoone, Sean; Beghi, Alessandro (2015). Machine Learning for Predictive Maintenance: A Multiple Classifier Approach. IEEE Transactions on Industrial Informatics, 11(3), 812–820. doi:10.1109/tii.2014.2349359 
 
 
 ## Methodology
@@ -43,7 +79,7 @@ We integrated basic Team Data Science Process (TDSP) Lifecycle  into DMAIC for m
 
 
 #### POC Architecture
-! put architecture here !
+![image](https://user-images.githubusercontent.com/124276426/216359369-3b877e1a-5737-42ed-b176-c3be4e41016f.png)
 
 ### Data EDA
 This project is executed by three members. We need appropriate credentials to provision necessary Azure resources for development and deployment, and Git server for version control. Then execute the various data science steps, creates and compares models, and deployes the final model using Azure Machine Learning.
