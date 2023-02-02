@@ -51,28 +51,6 @@ Predictive maintenance and preventive maintenance are two types of maintenance s
 ##### Equipment Downtime: Preventive maintenance can result in unplanned downtime, as maintenance activities may be performed even when equipment is functioning properly. Predictive maintenance can reduce unplanned downtime, as maintenance is performed only when a failure is predicted.
 ![image](https://user-images.githubusercontent.com/124276426/216359179-851d8a67-1e23-456d-822c-226ee7f7270f.png)
 
-### References
-De Ron, A. J., & Rooda, J. E. (2005). Equipment effectiveness: OEE revisited. IEEE transactions on semiconductor manufacturing, 18(1), 190-196.​
-
-Prasetyo, Y. T., & Veroya, F. C. (2020, April). An Application of Overall Equipment Effectiveness (OEE) for Minimizing the Bottleneck Process in Semiconductor Industry. In 2020 IEEE 7th International Conference on Industrial Engineering and Applications (ICIEA) (pp. 345-349). IEEE.​
-
-Lopena, S., Bertumen, E., & Mondero, J. (2021). Integrated Capacity Planning Tool Implementation in an OSAT Company using the Six Sigma DMAIC Framework. In DLSU Research Congress 2021 (Vol. 6).​
-
-Fischer, D., Moder, P., & Ehm, H. (2021, March). Investigation of predictive maintenance for semiconductor manufacturing and its impacts on the supply chain. In 2021 22nd IEEE International Conference on Industrial Technology (ICIT) (Vol. 1, pp. 1409-1416). IEEE.​
-
-Chazhoor, A., Mounika, Y., Sarobin, M. V. R., Sanjana, M. V., & Yasashvini, R. (2020, October). Predictive maintenance using machine learning based classification models. In IOP Conference Series: Materials Science and Engineering (Vol. 954, No. 1, p. 012001). IOP Publishing.​
-
-Zhang, M., & Wang, D. (2019). Machine Learning Based Alarm Analysis and Failure Forecast in Optical Networks. 2019 24th OptoElectronics and Communications Conference (OECC) and 2019 International Conference on Photonics in Switching and Computing (PSC).​
-
-Butte, S., Prashanth, A.R. and Patil, S., 2018, April. Machine learning based predictive maintenance strategy: a super learning approach with deep neural networks. In 2018 IEEE Workshop on Microelectronics and Electron Devices (WMED) (pp. 1-5). IEEE.​
-
-Van Staden, H. E., Deprez, L., & Boute, R. N. (2022). A dynamic “predict, then optimize” preventive maintenance approach using operational intervention data. European Journal of Operational Research, 302(3), 1079-1096.​
-
-Jang, J., Nana, D., Hochschild, J., & de Lorenzo, J. V. H. (2021). Predicting Breakdown Risk Based on Historical Maintenance Data for Air Force Ground Vehicles. arXiv preprint arXiv:2112.13922.​
-
-Susto, Gian Antonio; Schirru, Andrea; Pampuri, Simone; McLoone, Sean; Beghi, Alessandro (2015). Machine Learning for Predictive Maintenance: A Multiple Classifier Approach. IEEE Transactions on Industrial Informatics, 11(3), 812–820. doi:10.1109/tii.2014.2349359 
-
-
 ## Methodology
 We integrated basic Team Data Science Process (TDSP) Lifecycle  into DMAIC for methodology in our project. Data Science Lifecycle (DSLC) is list of steps in solving data-related problem using scientific and mathematical methods. TDSP Lifecycle is a team approach on DSLC projects. DMAIC is acronym for Define, Measure, Analyse, Improve and Control which is Six Sigma methodology for problem solving and improvement.
 
@@ -214,6 +192,27 @@ IPython notebook files can be double-clicked from the project structure on the l
 
 [comment]: # (If there is a substantial change in the customer's business workflow, make a before/after diagram showing the data flow.)
 
-## References
-* [Project Repository in GitHub](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)
-* [TDSP project template for Azure Machine Learning](https://aka.ms/tdspamlgithubrepo)
+### References
+De Ron, A. J., & Rooda, J. E. (2005). Equipment effectiveness: OEE revisited. IEEE transactions on semiconductor manufacturing, 18(1), 190-196.​
+
+Prasetyo, Y. T., & Veroya, F. C. (2020, April). An Application of Overall Equipment Effectiveness (OEE) for Minimizing the Bottleneck Process in Semiconductor Industry. In 2020 IEEE 7th International Conference on Industrial Engineering and Applications (ICIEA) (pp. 345-349). IEEE.​
+
+Lopena, S., Bertumen, E., & Mondero, J. (2021). Integrated Capacity Planning Tool Implementation in an OSAT Company using the Six Sigma DMAIC Framework. In DLSU Research Congress 2021 (Vol. 6).​
+
+Fischer, D., Moder, P., & Ehm, H. (2021, March). Investigation of predictive maintenance for semiconductor manufacturing and its impacts on the supply chain. In 2021 22nd IEEE International Conference on Industrial Technology (ICIT) (Vol. 1, pp. 1409-1416). IEEE.​
+
+Chazhoor, A., Mounika, Y., Sarobin, M. V. R., Sanjana, M. V., & Yasashvini, R. (2020, October). Predictive maintenance using machine learning based classification models. In IOP Conference Series: Materials Science and Engineering (Vol. 954, No. 1, p. 012001). IOP Publishing.​
+
+Zhang, M., & Wang, D. (2019). Machine Learning Based Alarm Analysis and Failure Forecast in Optical Networks. 2019 24th OptoElectronics and Communications Conference (OECC) and 2019 International Conference on Photonics in Switching and Computing (PSC).​
+
+Butte, S., Prashanth, A.R. and Patil, S., 2018, April. Machine learning based predictive maintenance strategy: a super learning approach with deep neural networks. In 2018 IEEE Workshop on Microelectronics and Electron Devices (WMED) (pp. 1-5). IEEE.​
+
+Van Staden, H. E., Deprez, L., & Boute, R. N. (2022). A dynamic “predict, then optimize” preventive maintenance approach using operational intervention data. European Journal of Operational Research, 302(3), 1079-1096.​
+
+Jang, J., Nana, D., Hochschild, J., & de Lorenzo, J. V. H. (2021). Predicting Breakdown Risk Based on Historical Maintenance Data for Air Force Ground Vehicles. arXiv preprint arXiv:2112.13922.​
+
+Susto, Gian Antonio; Schirru, Andrea; Pampuri, Simone; McLoone, Sean; Beghi, Alessandro (2015). Machine Learning for Predictive Maintenance: A Multiple Classifier Approach. IEEE Transactions on Industrial Informatics, 11(3), 812–820. doi:10.1109/tii.2014.2349359 
+
+[Project Repository in GitHub](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)
+
+[TDSP project template for Azure Machine Learning](https://aka.ms/tdspamlgithubrepo)
