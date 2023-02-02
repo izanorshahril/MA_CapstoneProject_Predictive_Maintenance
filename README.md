@@ -126,10 +126,10 @@ For data engineering and preparation, we are follow the flow as below:
 ![image](https://user-images.githubusercontent.com/124276426/216382366-666586c8-9b62-46eb-b753-fd218ee3ba4a.png)
 
 **Data cleanup: Removing columns and rows**
-Prior to feature engineering, we removed two columns fnlwgt, and education-num. [fnlwgt](https://web.cs.wpi.edu/~cs4341/C00/Projects/fnlwgt) is a sampling weight assigned to every individual, and education is redundant with education-num. We think it is reasonable to use a numerical assignment for education, with higher numbers for higher education levels.
+Prior to feature engineering, we removed columns with unknown values
 
-We removed all rows with unknown ('?') values in any one of the following columns:
-workclass, marital-status, occupation, relationship, race, sex, and native-country. 
+![image](https://user-images.githubusercontent.com/124276426/216383174-711b7b93-c0a9-4926-9da8-823d31f69e03.png)
+
 
 In addition, we removed rows where the native-country was not one of the ones from which > 100 individuals were recorded. There were < 10 native-countries from where more than 100 individuals were recorded in the 1994 census. Having few individuals from a native-country could result in unstable models for individuals those native-countries, and cause issues with differences between the training and test sets.
 
