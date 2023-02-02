@@ -78,6 +78,10 @@ There are 2 data we are focus on:
 1) Machine alarm data
 2) Machine status data
 
+![image](https://user-images.githubusercontent.com/124276426/216381512-6d5b83e4-869f-47c2-bf7b-54edf39c5dd3.png)
+
+In previous literature review, it is observed that many research using combination of alarm and sensor data to perform the PdM. However due to lacking such of resource data, we decided to explore solely on alarm data and machine status data to check what is the result on the PdM modelling.
+
 There are total 5 machines data is used where same equipment platform machine data is extracted. They are come from molding in assembly process. 
 The machine status UDR (unschedule downtime for repair) is focus in this project. Besides, machine alarm collected period are from Jan2022 to Dec2022.
 
