@@ -121,6 +121,10 @@ Next, by using Python, we could explore to descriptive statistic of our dataset,
 ## 3. [**Modeling**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/02_modeling)
 
 ### Feature Engineering
+For data engineering and preparation, we are follow the flow as below:
+
+![image](https://user-images.githubusercontent.com/124276426/216382366-666586c8-9b62-46eb-b753-fd218ee3ba4a.png)
+
 **Data cleanup: Removing columns and rows**
 Prior to feature engineering, we removed two columns fnlwgt, and education-num. [fnlwgt](https://web.cs.wpi.edu/~cs4341/C00/Projects/fnlwgt) is a sampling weight assigned to every individual, and education is redundant with education-num. We think it is reasonable to use a numerical assignment for education, with higher numbers for higher education levels.
 
