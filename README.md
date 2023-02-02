@@ -110,9 +110,9 @@ Where the distribution of alarm for 5 machines are consider equally, it is said 
 
 From data exploration, we also could have a glance on which are the top alarm in machine. However, our target for this project is to predict the major downtime and it caused by which attribute. Later we could compare to this Pareto chart whether top alarm causing the UDT in machine.
 
-![Uploading image.png…]()
+Next, by using Python, we could explore to descriptive statistic of our dataset, below show the statistic overview for our dataset:
 
-
+![image](https://user-images.githubusercontent.com/124276426/216381122-255aa843-0ac7-42b9-bf1e-dffcc2d8ca06.png)
 
 ## 3. [**Modeling**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/02_modeling)
 
