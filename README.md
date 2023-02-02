@@ -33,7 +33,6 @@ Problem Selection Matrix showing the criticality, severity and ranking for our t
 ### Problem Statement
 Equipment in manufacturing can contributes to the OEE factors (available, performance, quality) if not well maintained. Equipment without being repaired before it fails, can directly or indirectly causing further damage to the equipment and connected systems. In order to secure quality and cost saving, it is crucial to reduce any unscheduled machine breakdown. Preventive maintenance was most common technique that implemented in manufacturing sector these year. However, with preventive maintenance, the limitation was only periodic scheduling to perform health check and service to machine. In proactive manner, predictive maintenance can use to predict the failure, and before machine part breakdown, it take to precaution to repair or change part to reduce sudden failure during production running which causing un-scheduled downtime. Most of predictive maintenance today align with the implementation of Industry 4.0 is using edge platform attached to the machine by using sensor data as input that detect signal abnormality and critical threshold but there are still many legacy machines that not ready to be modernized with such capability.
 
-
 ### Objective
 Our objective in this project is:-
 1) To predict event which can cause unscheduled downtime for the running equipment
@@ -96,7 +95,7 @@ Performance of the machine learning models will be evaluated on the test set of 
 
 ### Raw Data
 Raw data are as shown as below:
-![Uploading image.png…]()
+![image](https://user-images.githubusercontent.com/124276426/216371229-e26ebcef-235c-4a4e-a60d-477d092ae476.png)
 There are 2 data we are focus on:
 1) Machine alarm data
 2) Machine status data
@@ -108,22 +107,23 @@ The raw data can be view in folder or link here:
 https://github.com/izanorshahril/MTDS5223_MA_CapstoneProject_Predictive_Maintenance/blob/main/raw/machine%20status.xlsx
 https://github.com/izanorshahril/MTDS5223_MA_CapstoneProject_Predictive_Maintenance/blob/main/raw/machine%20status.xlsx
 
-This data was extracted from (Siew Fen pls explain here)
+This data was extracted from software which direct communicate and store machine alarm. For machine status, it is extracted from manufacturing Execution System (MES). 
 
-There are a total of # of rows for machine alarm and # of rows for machine status
+There are a total of 52294 of rows for machine alarm and # of rows for machine status
+
 
 Machine alarm contains various alarms timestamped to Machine A, B, and C.
 
 Machine status contains the same machine status over the same period.
 
-TARGET: (put our target, predict class here)
+TARGET: Major Downtime (Yes/No)
 
 FEATURES: Alarms
 
 ### Data Exploration
-Data exploration is performed using the Python 3 [IDEAR (Interactive Data Exploration and Reporting) utility](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils/Python) published as a part of [TDSP suite of data science tools](https://github.com/Azure/Azure-TDSP-Utilities). This utility helps to generate standardized data exploration reports for data containing numerical and categorical features and target. Details of how the Python 3 IDEAR utility was used is provided below. 
+Data exploration is performed using the Python 3
+![Uploading image.png…]()
 
-The location of the final data exploration report is here: (.\Docs\DeliveralbeDocs\IDEAR.html).
 
 
 ## 3. [**Modeling**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/02_modeling)
