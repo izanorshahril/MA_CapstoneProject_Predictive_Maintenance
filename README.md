@@ -81,15 +81,15 @@ We integrated basic Team Data Science Process (TDSP) Lifecycle  into DMAIC for m
 ![image](https://user-images.githubusercontent.com/124276426/216359369-3b877e1a-5737-42ed-b176-c3be4e41016f.png)
 
 ### Data EDA
-This project is executed by three members. We need appropriate credentials to provision necessary Azure resources for development and deployment, and Git server for version control. Then execute the various data science steps, creates and compares models, and deployes the final model using Azure Machine Learning.
-
-### Data Preparation
+This project is executed by three members. The project execute the various data science steps, creates and compares models, and deployes the final model using Rapid Miner. In this project, we involve collaboration software includes PowerBI, Python, Excel, and Rapid Miner.
 
 ### Metrics
 Performance of the machine learning models will be evaluated on the test set of the machine alarm joined with the machine status dataset. Accuracy is measured and reported using AUC. AUC of > 0.8 will be considered acceptable and suitable for deployment.
 
 #### ROI
+For ROI, we are expecting to calculate the reduction of unscheduled downtime maintenance with implementation of prediction model versus existing unscheduled downtime. Due to the alarm data after maintenance didn’t analyse, unable to calculate the reduction of alarm detection / stoppage in equipment.
 
+Based on unscheduled downtime data, it is around 1% of overall equipment time and equivalate to 50K USD of process cost. Estimate at least 50% of unscheduled downtime reduction with 25K gain through prediction model. 
 
 ## 2. Data Acquisition and Understanding
 
@@ -109,12 +109,9 @@ https://github.com/izanorshahril/MTDS5223_MA_CapstoneProject_Predictive_Maintena
 
 This data was extracted from software which direct communicate and store machine alarm. For machine status, it is extracted from manufacturing Execution System (MES). 
 
-There are a total of 52294 of rows for machine alarm and # of rows for machine status
+There are a total of 52294 of rows for machine alarm and 191335 of rows for machine status.
 
-
-Machine alarm contains various alarms timestamped to Machine A, B, and C.
-
-Machine status contains the same machine status over the same period.
+Machine alarm contains various alarms timestamped to Machine A, B, C, D and E. Meanwhile, machine status contains the same machine status over the same period.
 
 TARGET: Major Downtime (Yes/No)
 
@@ -122,6 +119,15 @@ FEATURES: Alarms
 
 ### Data Exploration
 Data exploration is performed using the Python 3
+![image](https://user-images.githubusercontent.com/124276426/216376181-8489aae7-663b-452f-ad33-27978a5d71a8.png)
+
+Machine alarm data trend show that the alarm count is increasing over time, where in OEE is showed the OEE also decline over time,
+![image](https://user-images.githubusercontent.com/124276426/216377425-c165d181-fba1-4351-98d2-4391d4c5cb84.png)
+
+Where the distribution of alarm for 5 machines are consider equally, it is said to be the data are even for each machine, where we can generalize the alarm data without equipment info train into the model.
+![image](https://user-images.githubusercontent.com/124276426/216377553-9c64aeb1-6123-48f8-bcb4-8ec20d01da98.png)
+
+From data exploration, we also could have a glance on which are the top alarm in machine. However, our target for this project is to predict the major downtime and it caused by which attribute. Later we could compare to this Pareto chart whether top alarm causing the UDT in machine.
 ![Uploading image.png…]()
 
 
