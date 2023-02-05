@@ -155,24 +155,8 @@ Accuracy of the models were measured using AUC on the test data set. AUC of both
 Based on 37603 models ran on normalized data, we observed below results:
 ![image](https://user-images.githubusercontent.com/124276426/216816033-28e93073-1453-4c6b-82b6-ffcd3801daed.png)
 
-Most common models for predictive maintenance based on most early study is tree model such as Random Forest and Decision Tree, but we found that the result can be inconsistent prone to high classification error and is a bit lower than others. 
-
-Gradient Boosted Tree is expected to has higher performance as it’s more complex and robust model based on multiple decision trees. 
-
-Many industry experts also prefer Support Vector Machine (SVM) in predictive maintenance when we have high-dimensional data, well-suited if we have continuous data such as sensor log but from our result also it shows that SVM is also good in classification if we can make more features for it.
-
-Naïve Bayes is expected to have lower performance result due to limitation of relationship between features which is hard to interpret in real-world situation.​
-
-Logistic Regression and Fast Large Margin is good for binary classification, but we had lower result may be due to the quality of the data and available features for it.
-
-Deep Learning unexpectedly has poorer data amongst the other models. This may be due to lack of labelled data, as deep learning need a large amount of data to be trained effectively. Other reasons are imbalanced data distribution which is typical in manufacturing, which is controlled to has very low fault occurrence plus the relationship between features and target variable also are not straightforward.
-
-We found that Generalized Linear Model (GLM) has very good result. Fundamentally GLM is good when we have alarm data and historical machine with its target variable so GLM will learn the relationship between the alarm and the target make prediction. GLM also more robust and general and may be best for our limited feature dataset.
-
-
 ### Prediction
 There are 2 part of prediction:
-
 
 #### Result for T0 Down Time
 Predict Major Down Time using Generalized Linear Model:
@@ -194,10 +178,25 @@ By comparing
 ![image](https://user-images.githubusercontent.com/124276426/216815860-f297d567-87b8-4df0-b7f1-145061e307fb.png)
 
 
-### Tools
-Below are the tools that we utilized to perform analysis and prediction during this project:
-![image](https://user-images.githubusercontent.com/124276426/216815755-25e299eb-6468-41d3-b8bf-87d0efaa50f1.png)
+### Discussion
 
+Most common models for predictive maintenance based on most early study is tree model such as Random Forest and Decision Tree, but we found that the result can be inconsistent prone to high classification error and is a bit lower than others. 
+
+Gradient Boosted Tree is expected to has higher performance as it’s more complex and robust model based on multiple decision trees. 
+
+Many industry experts also prefer Support Vector Machine (SVM) in predictive maintenance when we have high-dimensional data, well-suited if we have continuous data such as sensor log but from our result also it shows that SVM is also good in classification if we can make more features for it.
+
+Naïve Bayes is expected to have lower performance result due to limitation of relationship between features which is hard to interpret in real-world situation.​
+
+Logistic Regression and Fast Large Margin is good for binary classification, but we had lower result may be due to the quality of the data and available features for it.
+
+Deep Learning unexpectedly has poorer data amongst the other models. This may be due to lack of labelled data, as deep learning need a large amount of data to be trained effectively. Other reasons are imbalanced data distribution which is typical in manufacturing, which is controlled to has very low fault occurrence plus the relationship between features and target variable also are not straightforward.
+
+We found that Generalized Linear Model (GLM) has very good result. Fundamentally GLM is good when we have alarm data and historical machine with its target variable so GLM will learn the relationship between the alarm and the target make prediction. GLM also more robust and general and may be best for our limited feature dataset.
+
+XGBoost is even higher than Gradient Boosted as expected so this is our best model for this project.
+
+![image](https://user-images.githubusercontent.com/80229890/216820911-bf17bceb-1eac-4619-95c0-07366703e09c.png)
 
 ### Limitation
 - Due  to limited data provisioning, data is limited to only for alarm and status. 
@@ -208,43 +207,14 @@ Below are the tools that we utilized to perform analysis and prediction during t
 ### ROI Analysis
 For ROI, we are expecting to calculate the reduction of unscheduled downtime maintenance with implementation of prediction model versus existing unscheduled downtime. Due to the alarm data after maintenance didn’t analyse, unable to calculate the reduction of alarm detection / stoppage in equipment. Based on unscheduled downtime data, it is around 1% of overall equipment time and equivalate to 50K USD of process cost. Estimate at least 50% of unscheduled downtime reduction with 25K gain through prediction model. 
 
-## Architecture, Environments, Code Execution
-
-#### Development
-An [Azure Data Science Virtual Machine (DSVM) Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm), (VM Size: [DS3_V2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), with 4 virtual CPUs and 14-Gb RAM). Although tested on an Azure DSVM.
-
-We used the TDSP template in Azure Machine Learning to create a new project, and all code and documents were developed in this project. Instructions on how to create a new project in TDSP format is provided [here](https://github.com/amlsamples/tdsp/blob/master/Docs/how-to-use-tdsp-in-azure-ml.md).
-
-Code is executed in the AMLW Python 3.5 environment using the Azure Machine Learning CLI. See Azure Machine Learning product documentation for information on installation and execution. Details about code and its execution are provided in the respective folders and subfolders under \Code.
-
-Outputs generated from data preparation and modeling stages are stored in the root .\output folder. 
-
-The deployment progress can be tracked with kubernetes from localhost:
-
-<img src="./images/kubernetes.png">
-
-## Version Control Repository
-An empty Git repository is needed to version control contents of this project. 
-
-#### Deployment
-For deployment, we copied the following files in the project root directory:
-1. Json file for input data format
-2. The pickled Random Forest model file (CVRandomForesstModel.pkl) 
-3. The scoring script, score.py, from the .\code\deployment folder
-
-Service is run in the Azure Container Service (ACS). The operationalization environment provisions Docker and Kubernetes in the cluster to manage the web service deployment.
-
-#### Code Execution
-In this example, we execute code in **local compute environment** only. Refer to Azure Machine Learning documents for execution details and further options.
-
-Executing a Python script in a local Python runtime is easy:
-
-    az ml experiment submit -c local my_script.py
-
-IPython notebook files can be double-clicked from the project structure on the left of the Azure Machine Learning UI and run in the Jypyter Notebook Server.
+### Tools
+Below are the tools that we utilized to perform analysis and prediction during this project:
+![image](https://user-images.githubusercontent.com/80229890/216820709-48b96c3c-5aa6-47d7-8840-45c2dd8e65f8.png)
 
 ## Conclusion
 Based on result matrix, Generalized Linear Model, Gradient Boosted Trees, and Support Vector Machine show better result compared to others aligned some of the research studies. We can have more options if we have more data such as sensor data and PM record. For the best model, we pick Generalized Linear Model due to good and consistent result when used with various datasets.Aggregation data as features is important, as from the performance matrix, aggregation alone can achieve fair result (>80% accuracy) compared to just using raw base data (~73%). Predicting a day before major down time has low accuracy because the time group is too large which is per 24 hours. We may accompany with multiple models to predict based on lesser time frame for better accuracy. Lastly, we may have better insight if we can analyze alarms on post downtime and maintenance.
+
+
 
 [comment]: # (If there is a substantial change in the customer's business workflow, make a before/after diagram showing the data flow.)
 
@@ -268,7 +238,3 @@ Van Staden, H. E., Deprez, L., & Boute, R. N. (2022). A dynamic “predict, then
 Jang, J., Nana, D., Hochschild, J., & de Lorenzo, J. V. H. (2021). Predicting Breakdown Risk Based on Historical Maintenance Data for Air Force Ground Vehicles. arXiv preprint arXiv:2112.13922.​
 
 Susto, Gian Antonio; Schirru, Andrea; Pampuri, Simone; McLoone, Sean; Beghi, Alessandro (2015). Machine Learning for Predictive Maintenance: A Multiple Classifier Approach. IEEE Transactions on Industrial Informatics, 11(3), 812–820. doi:10.1109/tii.2014.2349359 
-
-[Project Repository in GitHub](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)
-
-[TDSP project template for Azure Machine Learning](https://aka.ms/tdspamlgithubrepo)
