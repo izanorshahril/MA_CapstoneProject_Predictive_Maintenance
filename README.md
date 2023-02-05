@@ -153,12 +153,15 @@ Accuracy of the models were measured using AUC on the test data set. AUC of both
 ## 4. Result
 
 We observed below metrics from various models using Rapidminer.
+
 ![image](https://user-images.githubusercontent.com/124276426/216816033-28e93073-1453-4c6b-82b6-ffcd3801daed.png)
 
 Here is the binary classification accuracy metrics summary from Rapidminer. We can see all of it generally are good around 90% accuracy. Some of it are higher such as GLM, GBT & SVM.
+
 ![image](https://user-images.githubusercontent.com/80229890/216821228-80e32096-de98-4381-b991-ebdc863b7b62.png)
 
 We also run our dataset on several models in Azure machine learning, and here we also see similar result around 90% accuracy but with XGBoost as the best classifier.
+
 ![image](https://user-images.githubusercontent.com/80229890/216821246-dfba354c-d01b-4ab5-aef6-045f61b1667e.png)
 
 
@@ -167,22 +170,28 @@ There are 2 part of prediction:
 
 #### Result for T0 Down Time
 Predict Major Down Time using Generalized Linear Model:
+
 ![image](https://user-images.githubusercontent.com/124276426/216815908-77e7afa0-3e59-4dcd-97ff-5005ac8e378e.png)
 
 Confusion matrix:
+
 ![image](https://user-images.githubusercontent.com/124276426/216815951-0a613cd5-0c80-4607-8690-876d29d46b4f.png)
 
 But for PdM, we actually also want to predict the event before the down time. So next we try on multi label classification on Rapidminer, as we also want to predict the event before the down time. But here you can see the result is not good, and our best model here is SVM is only 76% accuracy.
+
 ![image](https://user-images.githubusercontent.com/80229890/216821456-1c0f1aee-2dd9-4030-9690-16d677b003eb.png)
 
 With Azure Machine Learning, we can get higher accuracy with XGBoost, and GBM above 80% accuracy.
+
 ![image](https://user-images.githubusercontent.com/80229890/216821476-b16e9e95-418b-4e89-8c0c-8963a20539e4.png)
 
 #### Result for T-1 Down Time 
 Predicting day before Major Down Time using Generalized Linear Model:
+
 ![image](https://user-images.githubusercontent.com/124276426/216815800-1ad2dd5e-3620-4adb-94fa-e347e69df8fe.png)
 
 Confusion matrix:
+
 ![image](https://user-images.githubusercontent.com/124276426/216815860-f297d567-87b8-4df0-b7f1-145061e307fb.png)
 
 
@@ -212,6 +221,7 @@ Gradient Boosted Tree (GBT), which is actually and ensembled decision trees whic
 XGBoost, which improves Gradient Boost even further by scale it in parallel so it optimizes the loss function and also has regularization such as shrinkage and subsampling to prevent overfitting. XGBoost performance result is even higher than Gradient Boosted as expected so this is our best model for this project.
 
 Also, we also want to mention LSTM, a type RNN, which can remember information over long periods of time make it good for NLP, time-series analysis, and also classification but we unable to try it due to technical issue to setup it which requires tensorflow or pytorch.
+
 ![image](https://user-images.githubusercontent.com/80229890/216820911-bf17bceb-1eac-4619-95c0-07366703e09c.png)
 
 
@@ -226,6 +236,7 @@ For ROI, we are expecting to calculate the reduction of unscheduled downtime mai
 
 ### Tools
 Below are the tools that we utilized to perform analysis and prediction during this project:
+
 ![image](https://user-images.githubusercontent.com/80229890/216820709-48b96c3c-5aa6-47d7-8840-45c2dd8e65f8.png)
 
 ## 6. Conclusion
