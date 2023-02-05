@@ -130,24 +130,16 @@ Prior to feature engineering, we removed columns with unknown values
 
 ![image](https://user-images.githubusercontent.com/124276426/216383174-711b7b93-c0a9-4926-9da8-823d31f69e03.png)
 
-
-In addition, we removed rows where the native-country was not one of the ones from which > 100 individuals were recorded. There were < 10 native-countries from where more than 100 individuals were recorded in the 1994 census. Having few individuals from a native-country could result in unstable models for individuals those native-countries, and cause issues with differences between the training and test sets.
-
-
-**One-hot encoding categorical features**
-
-Following categorical features were one-hot encoded using Scikit-learn's [preprocessing.OneHotEncoder()](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) function: 'workclass', marital-status, occupation, relationship, race, sex, native_country. So the same encodings are maintained in test set, when applying transformation to test set, we fit the transformation model on the training set and then transformed the test set. 
-
-**Standardization of numerical features**
-
-Numerical features (other than the ones above) were standardized using Scikit-learn's [preprocessing.StandardScaler()](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) function. When applying transformation to test set, we fit the transformation model on the training set and then transformed the test set.
-
-**Saving processed data sets for modeling input**
-
-Training and test data sets were pickled and saved as .pkl files for input into modeling (training data), and model evaluation or deployment (test data).
-
 ### Modeling training
-We created two models with 3-fold cross-validation: Elastic net and Random forest. We used [59-point sampling](http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf) for random grid search as a strategy for cross-validation. 
+We created several models with Rapid Miner. By testing out several dataset, which include raw dataset, normalized dataset, squared normalized dataset, & log dataset, we managed to result the table as below:
+![image](https://user-images.githubusercontent.com/124276426/216816196-40353cc5-33e7-4740-82de-299a82d9a9fb.png)
+
+While using different dataset, different features selection are manipulated to analyse which are the most suitable model to be perform PdM in case study. 
+a = average alarm count
+c = alarm count data
+d = alarm clearing duration
+s = machine UDR status statistic for each day
+a & c & d & s = merged dataset of all above attribute
 
 ### Model evaluation
 Accuracy of the models were measured using AUC on the test data set. AUC of both Elastic Net and Random Forest models were > 0.85. We save both models in pickled.pkl files, and output the ROC plots for both models. AUC of Random Forest model was 0.92 and that of the Elastic Net model was 0.90. In addition, for model interpretation, feature importance for the Random Forest model are output in a .csv file and plotted in a pdf (top 20 predictive features only). 
@@ -162,9 +154,61 @@ Importance of features from the Random Forest model is shown below:
 
 
 
-## 4. [**Deployment**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment)
-We deployed the Random Forest Model. Deployment is performed using Azure Container Services using Azure Machine Learning command-line utilities (CLI).
+## 4. Result and Discussion
 
+Based on 37603 models ran on normalized data, we observed below results:
+![image](https://user-images.githubusercontent.com/124276426/216816033-28e93073-1453-4c6b-82b6-ffcd3801daed.png)
+
+Most common models for predictive maintenance based on most early study is tree model such as Random Forest and Decision Tree, but we found that the result can be inconsistent prone to high classification error and is a bit lower than others. 
+
+Gradient Boosted Tree is expected to has higher performance as it’s more complex and robust model based on multiple decision trees. 
+
+Many industry experts also prefer Support Vector Machine (SVM) in predictive maintenance when we have high-dimensional data, well-suited if we have continuous data such as sensor log but from our result also it shows that SVM is also good in classification if we can make more features for it.
+
+Naïve Bayes is expected to have lower performance result due to limitation of relationship between features which is hard to interpret in real-world situation.​
+
+Logistic Regression and Fast Large Margin is good for binary classification, but we had lower result may be due to the quality of the data and available features for it.
+
+Deep Learning unexpectedly has poorer data amongst the other models. This may be due to lack of labelled data, as deep learning need a large amount of data to be trained effectively. Other reasons are imbalanced data distribution which is typical in manufacturing, which is controlled to has very low fault occurrence plus the relationship between features and target variable also are not straightforward.
+
+We found that Generalized Linear Model (GLM) has very good result. Fundamentally GLM is good when we have alarm data and historical machine with its target variable so GLM will learn the relationship between the alarm and the target make prediction. GLM also more robust and general and may be best for our limited feature dataset.
+
+
+### Prediction
+There are 2 part of prediction:
+
+
+#### Result for T0 Down Time
+Predict Major Down Time using Generalized Linear Model:
+![image](https://user-images.githubusercontent.com/124276426/216815908-77e7afa0-3e59-4dcd-97ff-5005ac8e378e.png)
+
+Confusion Matrix comparing different features selection:
+![image](https://user-images.githubusercontent.com/124276426/216815951-0a613cd5-0c80-4607-8690-876d29d46b4f.png)
+
+
+#### Result for T-1 Down Time 
+Predicting day before Major Down Time using Generalized Linear Model:
+P![image](https://user-images.githubusercontent.com/124276426/216815800-1ad2dd5e-3620-4adb-94fa-e347e69df8fe.png)
+
+#### Confusion Matrix Comparison
+
+By comparing
+![image](https://user-images.githubusercontent.com/124276426/216815860-f297d567-87b8-4df0-b7f1-145061e307fb.png)
+
+
+### Tools
+Below are the tools that we utilized to perform analysis and prediction during this project:
+![image](https://user-images.githubusercontent.com/124276426/216815755-25e299eb-6468-41d3-b8bf-87d0efaa50f1.png)
+
+
+### Limitation
+- Due  to limited data provisioning, data is limited to only for alarm and status. 
+- No categorization on alarm for which module and its critical alarm. Difficulties to try other platform and tools (Azure, tensor, error troubleshooting, etc).
+- Unable to try different model such as LSTM. 
+- Team's technical knowledge constraint on predictive maintenance know-how.
+
+### ROI Analysis
+For ROI, we are expecting to calculate the reduction of unscheduled downtime maintenance with implementation of prediction model versus existing unscheduled downtime. Due to the alarm data after maintenance didn’t analyse, unable to calculate the reduction of alarm detection / stoppage in equipment. Based on unscheduled downtime data, it is around 1% of overall equipment time and equivalate to 50K USD of process cost. Estimate at least 50% of unscheduled downtime reduction with 25K gain through prediction model. 
 
 ## Architecture, Environments, Code Execution
 
@@ -201,6 +245,8 @@ Executing a Python script in a local Python runtime is easy:
 
 IPython notebook files can be double-clicked from the project structure on the left of the Azure Machine Learning UI and run in the Jypyter Notebook Server.
 
+## Conclusion
+Based on result matrix, Generalized Linear Model, Gradient Boosted Trees, and Support Vector Machine show better result compared to others aligned some of the research studies. We can have more options if we have more data such as sensor data and PM record. For the best model, we pick Generalized Linear Model due to good and consistent result when used with various datasets.Aggregation data as features is important, as from the performance matrix, aggregation alone can achieve fair result (>80% accuracy) compared to just using raw base data (~73%). Predicting a day before major down time has low accuracy because the time group is too large which is per 24 hours. We may accompany with multiple models to predict based on lesser time frame for better accuracy. Lastly, we may have better insight if we can analyze alarms on post downtime and maintenance.
 
 [comment]: # (If there is a substantial change in the customer's business workflow, make a before/after diagram showing the data flow.)
 
