@@ -150,10 +150,17 @@ a & c & d & s = merged dataset of all above attribute
 Accuracy of the models were measured using AUC on the test data set. AUC of both Elastic Net and Random Forest models were > 0.85. We save both models in pickled.pkl files, and output the ROC plots for both models. AUC of Random Forest model was 0.92 and that of the Elastic Net model was 0.90. In addition, for model interpretation, feature importance for the Random Forest model are output in a .csv file and plotted in a pdf (top 20 predictive features only). 
 
 
-## 4. Result and Discussion
+## 4. Result
 
-Based on 37603 models ran on normalized data, we observed below results:
+We observed below metrics from various models using Rapidminer:
 ![image](https://user-images.githubusercontent.com/124276426/216816033-28e93073-1453-4c6b-82b6-ffcd3801daed.png)
+
+Here is the binary classification accuracy metrics summary from Rapidminer. We can see all of it generally are good around 90% accuracy. Some of it are higher such as GLM, GBT & SVM
+![image](https://user-images.githubusercontent.com/80229890/216821228-80e32096-de98-4381-b991-ebdc863b7b62.png)
+
+We also run our dataset on several models in Azure machine learning, and here we also see similar result around 90% accuracy but with XGBoost as the best classifier.
+![image](https://user-images.githubusercontent.com/80229890/216821246-dfba354c-d01b-4ab5-aef6-045f61b1667e.png)
+
 
 ### Prediction
 There are 2 part of prediction:
@@ -167,6 +174,11 @@ Confusion Matrix comparing different features selection:
 
 ![image](https://user-images.githubusercontent.com/124276426/216815951-0a613cd5-0c80-4607-8690-876d29d46b4f.png)
 
+But for PdM, we actually also want to predict the event before the down time. So next we try on multi label classification on Rapidminer, as we also want to predict the event before the down time. But here you can see the result is not good, and our best model here is SVM is only 76% accuracy.
+![image](https://user-images.githubusercontent.com/80229890/216821456-1c0f1aee-2dd9-4030-9690-16d677b003eb.png)
+
+With Azure Machine Learning, we can get higher accuracy with XGBoost, and GBM above 80% accuracy.
+![image](https://user-images.githubusercontent.com/80229890/216821476-b16e9e95-418b-4e89-8c0c-8963a20539e4.png)
 
 #### Result for T-1 Down Time 
 Predicting day before Major Down Time using Generalized Linear Model:
@@ -178,25 +190,34 @@ By comparing
 ![image](https://user-images.githubusercontent.com/124276426/216815860-f297d567-87b8-4df0-b7f1-145061e307fb.png)
 
 
-### Discussion
+## 5. Discussion
 
-Most common models for predictive maintenance based on most early study is tree model such as Random Forest and Decision Tree, but we found that the result can be inconsistent prone to high classification error and is a bit lower than others. 
+#### Models used in this project
+Naïve Bayes, is simple and fast, commonly useful in natural language processing but is limited for complex data. Naïve Bayes is expected to have lower performance result due to limitation of relationship between features which is hard to interpret in real-world situation.
 
-Gradient Boosted Tree is expected to has higher performance as it’s more complex and robust model based on multiple decision trees. 
+Logistic Regression is also simple, but only good for binary classification, but we had lower result may be due to the quality of the data and available features for it.
 
-Many industry experts also prefer Support Vector Machine (SVM) in predictive maintenance when we have high-dimensional data, well-suited if we have continuous data such as sensor log but from our result also it shows that SVM is also good in classification if we can make more features for it.
+Fast Large Margin is good when we have large datasets but it also sensitive to imbalanced data.
 
-Naïve Bayes is expected to have lower performance result due to limitation of relationship between features which is hard to interpret in real-world situation.​
-
-Logistic Regression and Fast Large Margin is good for binary classification, but we had lower result may be due to the quality of the data and available features for it.
+Most common models for predictive maintenance based on most early study is tree model such as Random Forest and Decision Tree, but we found that the result can be inconsistent prone to high classification error and is a bit lower than others. Decision Tree in good with non-linear data, but prone to overfitting. Then Random Forest is combination of multiple decision trees, so we should have better and bigger trees but we also inherit the similar weakness such as overfitting, but random forest also can perform poorer dan decision tree due to bias to some features.
 
 Deep Learning unexpectedly has poorer data amongst the other models. This may be due to lack of labelled data, as deep learning need a large amount of data to be trained effectively. Other reasons are imbalanced data distribution which is typical in manufacturing, which is controlled to has very low fault occurrence plus the relationship between features and target variable also are not straightforward.
 
-We found that Generalized Linear Model (GLM) has very good result. Fundamentally GLM is good when we have alarm data and historical machine with its target variable so GLM will learn the relationship between the alarm and the target make prediction. GLM also more robust and general and may be best for our limited feature dataset.
+#### Good model found in this project
 
-XGBoost is even higher than Gradient Boosted as expected so this is our best model for this project.
+Based on our result from rapidminer and azure ml, we can conclude some of good model for predictive maintenance, these are more robust models compared to the previous mentioned models.
 
+We found that Generalized Linear Model (GLM) has very good result. Fundamentally GLM is good when we have alarm data and historical machine with its target variable so GLM will learn the relationship between the alarm and the target make prediction. GLM is versatile and flexible because it can handle different type of data and non-linear relationships. It also has built-in regulation techniques such as ridge and lasso that can avoid overfitting and improve generalization.
+
+Support Vector Machine (SVM) is good for linear & non-linear data, it also can handle high dimensional & imbalanced data which make it popular choice among our expert in maintenance,  well-suited if we have continuous data such as sensor log but from our result also it shows that SVM is also good in classification if we can make more features for it.
+
+Gradient Boosted Tree (GBT), which is actually and ensembled decision trees which is good because it minimized the loss function or error, learned from it, and pass it to the next iteration. 
+
+XGBoost, which improves Gradient Boost even further by scale it in parallel so it optimizes the loss function and also has regularization such as shrinkage and subsampling to prevent overfitting. XGBoost performance result is even higher than Gradient Boosted as expected so this is our best model for this project.
+
+Also, we also want to mention LSTM, a type RNN, which can remember information over long periods of time make it good for NLP, time-series analysis, and also classification but we unable to try it due to technical issue to setup it which requires tensorflow or pytorch.
 ![image](https://user-images.githubusercontent.com/80229890/216820911-bf17bceb-1eac-4619-95c0-07366703e09c.png)
+
 
 ### Limitation
 - Due  to limited data provisioning, data is limited to only for alarm and status. 
@@ -211,10 +232,10 @@ For ROI, we are expecting to calculate the reduction of unscheduled downtime mai
 Below are the tools that we utilized to perform analysis and prediction during this project:
 ![image](https://user-images.githubusercontent.com/80229890/216820709-48b96c3c-5aa6-47d7-8840-45c2dd8e65f8.png)
 
-## Conclusion
-Based on result matrix, Generalized Linear Model, Gradient Boosted Trees, and Support Vector Machine show better result compared to others aligned some of the research studies. We can have more options if we have more data such as sensor data and PM record. For the best model, we pick Generalized Linear Model due to good and consistent result when used with various datasets.Aggregation data as features is important, as from the performance matrix, aggregation alone can achieve fair result (>80% accuracy) compared to just using raw base data (~73%). Predicting a day before major down time has low accuracy because the time group is too large which is per 24 hours. We may accompany with multiple models to predict based on lesser time frame for better accuracy. Lastly, we may have better insight if we can analyze alarms on post downtime and maintenance.
+## 6. Conclusion
+Based on result matrix, Generalized Linear Model, Gradient Boosted Trees, and Support Vector Machine show better result compared to others aligned some of the research studies. We can have more options if we have more data such as sensor data and PM record. For the best model, we pick Generalized Linear Model due to good and consistent result when used with various datasets. Aggregation data as features is important, as from the performance matrix, aggregation alone can achieve fair result (>80% accuracy) compared to just using raw base data (~73%). Predicting a day before major down time has low accuracy because the time group is too large which is per 24 hours. We may accompany with multiple models to predict based on lesser time frame for better accuracy. We can also ensemble or combine or accompany various multiple models to support our PdM, get more data source such as sensor or log data, or categorize our data base on its machine sub-module and its critical level, and we may have better insight if we can analyze alarms on post downtime and maintenance. Finally, once deployed, we still need to monitor, maintain, and refine our model by retraining and tuning, explore and get more data.
 
-
+## Thank You !!!
 
 [comment]: # (If there is a substantial change in the customer's business workflow, make a before/after diagram showing the data flow.)
 
