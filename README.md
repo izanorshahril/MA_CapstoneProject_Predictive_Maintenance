@@ -180,7 +180,7 @@ With Azure Machine Learning, we can get higher accuracy with XGBoost, and GBM ab
 
 #### Result for T-1 Down Time 
 Predicting day before Major Down Time using Generalized Linear Model:
-P![image](https://user-images.githubusercontent.com/124276426/216815800-1ad2dd5e-3620-4adb-94fa-e347e69df8fe.png)
+![image](https://user-images.githubusercontent.com/124276426/216815800-1ad2dd5e-3620-4adb-94fa-e347e69df8fe.png)
 
 Confusion matrix:
 ![image](https://user-images.githubusercontent.com/124276426/216815860-f297d567-87b8-4df0-b7f1-145061e307fb.png)
