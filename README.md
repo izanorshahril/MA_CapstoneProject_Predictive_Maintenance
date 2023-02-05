@@ -135,23 +135,19 @@ We created several models with Rapid Miner. By testing out several dataset, whic
 ![image](https://user-images.githubusercontent.com/124276426/216816196-40353cc5-33e7-4740-82de-299a82d9a9fb.png)
 
 While using different dataset, different features selection are manipulated to analyse which are the most suitable model to be perform PdM in case study. 
+
 a = average alarm count
+
 c = alarm count data
+
 d = alarm clearing duration
+
 s = machine UDR status statistic for each day
+
 a & c & d & s = merged dataset of all above attribute
 
 ### Model evaluation
 Accuracy of the models were measured using AUC on the test data set. AUC of both Elastic Net and Random Forest models were > 0.85. We save both models in pickled.pkl files, and output the ROC plots for both models. AUC of Random Forest model was 0.92 and that of the Elastic Net model was 0.90. In addition, for model interpretation, feature importance for the Random Forest model are output in a .csv file and plotted in a pdf (top 20 predictive features only). 
-
-ROC curve of **Random Forest model (Left)** on test data is shown below. This was the model that was deployed:
-
-<img src="./images/rf-auc.png" width="400" height="350">
-
-Importance of features from the Random Forest model is shown below:
-
-<img src="./images/featImportance.png" width="800" height="450">
-
 
 
 ## 4. Result and Discussion
@@ -180,9 +176,11 @@ There are 2 part of prediction:
 
 #### Result for T0 Down Time
 Predict Major Down Time using Generalized Linear Model:
+
 ![image](https://user-images.githubusercontent.com/124276426/216815908-77e7afa0-3e59-4dcd-97ff-5005ac8e378e.png)
 
 Confusion Matrix comparing different features selection:
+
 ![image](https://user-images.githubusercontent.com/124276426/216815951-0a613cd5-0c80-4607-8690-876d29d46b4f.png)
 
 
