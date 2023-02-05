@@ -11,8 +11,14 @@ Iza Norshahril Bin Ibrahim M032110060,
 Ang Siew Fen M032110048,
 Goh Chau Fong M032110046
 
-#
-#
+
+
+
+
+
+
+
+
 #
 ### Problem Background
 Overall Equipment Effectiveness (OEE) is a kind of standard that to measure manufacturing productivity performance. OEE measurement can be help in underlying the losses and gain important insight on improve the current manufacturing process. OEE is measuring by 3 main factors which are availability (equipment planned & unplanned stop), performance (any slow cycle or small stoppage) and quality (yield).
