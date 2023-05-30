@@ -1,15 +1,15 @@
-# MTDS MA Capstone Project Report: Predictive Maintenance
+# MA Capstone Project Report: Predictive Maintenance
 
 [comment]: # (This document is intended to capture the use case summary for this engagement. An executive summary should contain a brief overview of the project, but not every detail. Only the current summary should be captured here and this should be edited over time to reflect the latest details.)
 [comment]: # (Some ideas of what to include in the executive summary are detailed below. Please edit and capture the relevant information within each section)
 [comment]: # (To capture more detail in the scoping phase, the optional template Scoping.md may be utilized. If more detail around the data, use case, architecture, or other aspects needs to be captured, additional markdown files can be referenced and placed into the Docs folder)
 
-This repository is for MTDS5223 Manufacturing Analytics Capstone Project titled Predictive Maintenance.
+This repository is for Manufacturing Analytics Capstone Project titled Predictive Maintenance.
 
 Team members: 
-Iza Norshahril Bin Ibrahim M032110060,
-Ang Siew Fen M032110048,
-Goh Chau Fong M032110046
+Iza Norshahril Bin Ibrahim,
+Ang Siew Fen,
+Goh Chau Fong
 
 
 
